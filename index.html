@@ -1,0 +1,1474 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vijaya Corporate Consultants | Premium Governance Solutions Sri Lanka</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <meta name="description" content="Elite corporate governance, financial management, and strategic advisory services in Colombo with cutting-edge technology and premium client experience.">
+    
+    <!-- Premium Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Advanced Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollToPlugin.min.js"></script>
+    
+    <!-- Custom Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        navy: '#0A192F',
+                        slate: '#112240',
+                        gold: '#C5A059',
+                        'gold-light': '#D4AF37',
+                        light: '#F8F9FA',
+                        dark: '#020C1B',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'gradient-shift': 'gradient 3s ease infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'morph': 'morph 8s ease-in-out infinite',
+                        'typewriter': 'typewriter 3.5s steps(40, end)',
+                        'blink-caret': 'blink-caret .75s step-end infinite',
+                        'slide-in': 'slideIn 1s ease-out',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        gradient: {
+                            '0%, 100%': { 'background-position': '0% 50%' },
+                            '50%': { 'background-position': '100% 50%' },
+                        },
+                        morph: {
+                            '0%': { 'border-radius': '60% 40% 30% 70% / 60% 30% 70% 40%' },
+                            '50%': { 'border-radius': '30% 60% 70% 40% / 50% 60% 30% 60%' },
+                            '100%': { 'border-radius': '60% 40% 30% 70% / 60% 30% 70% 40%' },
+                        },
+                        typewriter: {
+                            from: { width: '0' },
+                            to: { width: '100%' },
+                        },
+                        'blink-caret': {
+                            'from, to': { 'border-color': 'transparent' },
+                            '50%': { 'border-color': '#C5A059' },
+                        },
+                        slideIn: {
+                            '0%': { transform: 'translateY(30px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                    },
+                    backdropBlur: {
+                        xs: '2px',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --navy: #0A192F;
+            --slate: #112240;
+            --gold: #C5A059;
+        }
+        
+        /* Page Transition */
+        .page-transition {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+        
+        /* 3D Card Effects */
+        .perspective-1000 { perspective: 1000px; }
+        .preserve-3d { transform-style: preserve-3d; }
+        .backface-hidden { backface-visibility: hidden; }
+        .rotate-y-180 { transform: rotateY(180deg); }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, var(--gold), #D4AF37);
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #B89030, var(--gold));
+        }
+        
+        /* Glass Morphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .dark .glass {
+            background: rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Floating Shapes */
+        .floating-shape {
+            position: absolute;
+            background: linear-gradient(135deg, var(--gold), transparent);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morph 8s ease-in-out infinite;
+        }
+        
+        .shape-1 {
+            width: 200px;
+            height: 200px;
+            top: -50px;
+            right: -50px;
+            opacity: 0.1;
+        }
+        /* Ensure Contact Form Service Tiles match the premium branding */
+.service-tile h4 {
+    font-family: 'Playfair Display', serif !important;
+    letter-spacing: 0.025em;
+}
+
+.service-tile p, 
+.service-tile span,
+#contact-form label,
+#contact-form input,
+#contact-form textarea {
+    font-family: 'Inter', sans-serif !important;
+}
+        
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            bottom: 30px;
+            left: -30px;
+            opacity: 0.07;
+        }
+        
+        /* Gradient Underline */
+        .gradient-underline {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .gradient-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--gold), transparent);
+            border-radius: 2px;
+        }
+        
+        /* Hover 3D Effect */
+        .hover-3d {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-3d:hover {
+            transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+        }
+        
+        /* Pulse Rings */
+        .pulse-ring {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.05); }
+        }
+        
+        /* Text Gradient */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .dark .text-gradient {
+            background: linear-gradient(135deg, #FFFFFF 0%, var(--gold-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Stagger Animation Delays */
+        .animation-delay-200 { animation-delay: 200ms; }
+        .animation-delay-400 { animation-delay: 400ms; }
+        .animation-delay-600 { animation-delay: 600ms; }
+        .animation-delay-800 { animation-delay: 800ms; }
+    </style>
+</head>
+<body class="bg-light dark:bg-dark text-slate-800 dark:text-gray-300 antialiased transition-colors duration-300">
+    
+    <!-- Dark Mode Toggle -->
+    <button id="darkModeToggle" class="fixed top-6 right-6 z-50 w-12 h-12 rounded-full glass flex items-center justify-center shadow-lg hover:shadow-xl transition-all hover:scale-110">
+        <i id="darkIcon" class="fas fa-moon text-gold text-xl"></i>
+    </button>
+    
+    <!-- Progress Bar -->
+    <div class="fixed top-0 left-0 h-1 bg-gradient-to-r from-gold via-gold-light to-yellow-300 z-[9999] transition-all duration-150" id="progressBar"></div>
+    
+    <!-- Page Transition Overlay -->
+    <div class="page-transition fixed inset-0 bg-navy dark:bg-dark z-[9998] transform translate-y-full"></div>
+    
+    <!-- Live Chat Widget -->
+    <div class="live-chat fixed bottom-6 right-6 z-40">
+        <div class="chat-toggle w-14 h-14 bg-gradient-to-r from-gold to-gold-light rounded-full shadow-2xl flex items-center justify-center cursor-pointer hover:scale-110 transition-transform group relative">
+            <i class="fas fa-comment-dots text-white text-xl"></i>
+            <div class="absolute -top-2 -right-2 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-xs text-white font-bold pulse-ring">
+                <span class="animate-pulse">3</span>
+            </div>
+        </div>
+        <div id="chatWindow" class="chat-window hidden absolute bottom-16 right-0 w-80 bg-white dark:bg-slate-800 rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
+            <div class="p-4 bg-gradient-to-r from-navy to-slate text-white">
+                <div class="flex justify-between items-center">
+                    <h4 class="font-bold">Chat with Vijaya</h4>
+                    <button class="close-chat text-gray-300 hover:text-white">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <p class="text-xs text-gray-300 mt-1">Typically replies in 2 minutes</p>
+            </div>
+            <div class="p-4 h-64 overflow-y-auto" id="chatMessages">
+                <div class="message-bot mb-4">
+                    <div class="inline-block bg-gray-100 dark:bg-gray-700 rounded-2xl rounded-tl-none px-4 py-2 max-w-xs">
+                        <p class="text-sm">Hello! How can we assist your business today?</p>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">Just now</p>
+                </div>
+            </div>
+            <div class="p-4 border-t border-gray-200 dark:border-gray-700">
+                <div class="flex">
+                    <input type="text" id="chatInput" placeholder="Type your message..." class="flex-grow px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-gold dark:bg-gray-700">
+                    <button id="sendChat" class="px-4 py-2 bg-gold text-white rounded-r-lg hover:bg-gold-light transition">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-800">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+            <div class="flex-shrink-0 flex items-center">
+                <a href="index.html" class="flex items-center">
+                    <img src="logo.png" alt="Vijaya Consultants" class="h-12 w-auto md:h-16 object-contain">
+                </a>
+            </div>
+            
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-navy dark:hover:text-white transition relative group">
+                    About
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="#services" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-navy dark:hover:text-white transition relative group">
+                    Services
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="#sectors" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-navy dark:hover:text-white transition relative group">
+                    Sectors
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="services.html" class="nav-link text-sm font-medium text-gray-600 dark:text-gray-400 hover:text-navy dark:hover:text-white transition relative group">
+                    Pricings & Plans
+                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gold group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="#contact" class="px-5 py-2.5 bg-gradient-to-r from-navy to-slate text-white text-sm font-medium rounded-lg hover:shadow-lg transition-all hover:scale-105 shadow-md">
+                    <i class="fas fa-calendar-check mr-2"></i>Request Consultation
+                </a>
+            </div>
+
+            <div class="md:hidden flex items-center">
+                <button id="mobileMenuBtn" class="text-gray-600 dark:text-gray-400 hover:text-navy dark:hover:text-white focus:outline-none">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <div id="mobileMenu" class="md:hidden hidden py-4 border-t border-gray-200 dark:border-gray-800">
+            <div class="flex flex-col space-y-4">
+                <a href="#about" class="nav-link text-gray-600 dark:text-gray-400 hover:text-navy dark:hover:text-white transition">About</a>
+                <a href="#services" class="nav-link text-gray-600 dark:text-gray-400 hover:text-navy dark:hover:text-white transition">Services</a>
+                <a href="#sectors" class="nav-link text-gray-600 dark:text-gray-400 hover:text-navy dark:hover:text-white transition">Sectors</a>
+                <a href="services.html" class="nav-link text-gray-600 dark:text-gray-400 hover:text-navy dark:hover:text-white transition">Pricings & Plans</a>
+                <a href="#contact" class="px-4 py-2 bg-navy text-white text-sm font-medium rounded hover:bg-slate-700 transition text-center">Request Consultation</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+    <!-- Hero Section with 3D Background -->
+    <header class="relative bg-navy dark:bg-dark h-screen flex items-center overflow-hidden">
+        <!-- 3D Canvas -->
+        <canvas id="hero3d" class="absolute inset-0 z-0"></canvas>
+        <div class="absolute inset-0 bg-gradient-to-r from-navy/95 via-navy/85 to-transparent dark:from-dark/95 dark:via-dark/90 z-10"></div>
+        
+        <!-- Animated Elements -->
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        
+        <!-- Content -->
+        <div class="relative z-20 max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="max-w-2xl">
+                <div class="inline-block px-4 py-2 bg-gradient-to-r from-gold/20 to-transparent rounded-full border border-gold/30 mb-6">
+                    <span class="text-gold text-sm font-medium"><i class="fas fa-star mr-2"></i>Premium Corporate Advisory</span>
+                </div>
+                
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white leading-tight mb-6 animate-slide-in">
+                    <span class="typewriter inline-block overflow-hidden whitespace-nowrap border-r-4 border-gold pr-1">Expert Governance.</span><br/>
+                    <span class="text-gold typewriter inline-block overflow-hidden whitespace-nowrap border-r-4 border-gold pr-1 animation-delay-800">Seamless Compliance.</span>
+                </h1>
+                
+                <p class="text-lg text-gray-300 dark:text-gray-400 mb-8 font-light leading-relaxed animate-slide-in animation-delay-400">
+                    Empowering Sri Lankan enterprises, NGOs, and public institutions with <span class="text-gold font-medium">cutting-edge</span> solutions to complex administrative challenges.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 animate-slide-in animation-delay-600">
+                    <a href="#contact" class="group px-8 py-3.5 bg-gradient-to-r from-gold to-gold-light text-white font-medium rounded-lg hover:shadow-2xl transition-all hover:scale-105 text-center shadow-lg flex items-center justify-center">
+                        <span>Request a Consultation</span>
+                        <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                    </a>
+                    <a href="#services" class="group px-8 py-3.5 border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:text-navy transition-all text-center flex items-center justify-center">
+                        <span>Explore Our Services</span>
+                        <i class="fas fa-chevron-down ml-2 group-hover:translate-y-1 transition-transform"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
+            <a href="#about" class="text-white hover:text-gold transition">
+                <i class="fas fa-chevron-down text-2xl"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white dark:bg-slate-900 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent animate-gradient"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-20 items-center">
+                <div class="animate-slide-in">
+                    <span class="text-gold font-semibold uppercase tracking-wider text-sm mb-4 block">About Us</span>
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-navy dark:text-white mb-6 gradient-underline">Trusted Advisors for Serious Businesses</h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                        Based in the heart of Colombo, <strong class="text-navy dark:text-white">Vijaya Corporate Consultants (Pvt) Ltd</strong> is a premier advisory firm specializing in corporate governance, financial administration, and business consulting.
+                    </p>
+                    <p class="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+                        We bridge the gap between complex regulatory requirements and operational efficiency. Whether you are a startup needing compliance or an INGO requiring project evaluation, we provide clarity and peace of mind.
+                    </p>
+                    
+                    <div class="grid grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gold/20 to-navy/20 flex items-center justify-center mr-4">
+                                <i class="fas fa-award text-gold"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-navy dark:text-white">150+</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Clients Served</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded-full bg-gradient-to-br from-gold/20 to-navy/20 flex items-center justify-center mr-4">
+                                <i class="fas fa-calendar-check text-gold"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-navy dark:text-white">5+</p>
+                                <p class="text-sm text-gray-600 dark:text-gray-400">Years Experience</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <blockquote class="relative pl-10 italic text-lg text-slate-600 dark:text-gray-400 border-l-4 border-gold">
+                        <i class="fas fa-quote-left absolute left-0 top-0 text-gold text-2xl"></i>
+                        "Simple solutions for greater difficulties."
+                    </blockquote>
+                </div>
+                
+                <div class="mt-12 lg:mt-0 relative animate-slide-in animation-delay-400">
+                    <div class="absolute -top-6 -left-6 w-32 h-32 bg-gradient-to-br from-gold/10 to-transparent rounded-full -z-10 animate-pulse"></div>
+                    <div class="absolute -bottom-6 -right-6 w-24 h-24 bg-gradient-to-br from-navy/10 to-transparent rounded-full -z-10 animate-pulse animation-delay-400"></div>
+                    
+                    <div class="relative group cursor-pointer hover-3d">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-gold to-transparent rounded-2xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500"></div>
+                        <img src="consultancy.jpg" alt="Professional Meeting" class="rounded-xl shadow-2xl w-full object-cover h-96">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy/40 to-transparent rounded-xl"></div>
+                        <div class="absolute bottom-6 left-6 text-white">
+                            <p class="font-bold text-lg">Board Room Consultation</p>
+                            <p class="text-sm">Colombo Headquarters</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-gradient-to-b from-white to-gray-50 dark:from-slate-900 dark:to-slate-800 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <span class="text-gold font-semibold uppercase tracking-wider text-sm mb-4 inline-block animate-pulse">
+                    <i class="fas fa-star mr-2"></i>Our Expertise
+                </span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-navy dark:text-white mb-4 text-gradient">
+                    Core Services
+                </h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Premium advisory solutions tailored to your specific business needs</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 perspective-1000">
+                <!-- Service Card 1 -->
+                <div class="service-card group" onmouseenter="flipCard(this)" onmouseleave="unflipCard(this)">
+                    <div class="card-inner relative w-full h-64 transition-transform duration-700 preserve-3d">
+                        <div class="card-front absolute inset-0 bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl border-l-4 border-navy dark:border-gold backface-hidden flex flex-col justify-center hover:shadow-2xl transition-shadow">
+                            <div class="w-16 h-16 bg-gradient-to-br from-navy to-slate dark:from-gold dark:to-gold-light rounded-xl flex items-center justify-center mb-6 text-white transform group-hover:scale-110 transition-transform duration-500">
+                                <i class="fas fa-file-contract text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-navy dark:text-white mb-4">Company Secretarial</h3>
+                            <div class="text-gold font-medium mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center">
+                                Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                        <div class="card-back absolute inset-0 bg-gradient-to-br from-navy to-slate dark:from-slate-800 dark:to-slate-900 text-white p-8 rounded-2xl shadow-xl backface-hidden rotate-y-180 flex flex-col justify-center">
+                            <h4 class="text-xl font-bold mb-4">Comprehensive Support:</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Full Companies Act Compliance</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Statutory Filings & Registers</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Board Documentation</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Annual Returns</li>
+                            </ul>
+                            <a href="#contact" class="mt-6 px-4 py-2 bg-gold text-white rounded-lg text-sm font-medium inline-block w-fit mx-auto hover:bg-gold-light transition">Get Quote</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="service-card group" onmouseenter="flipCard(this)" onmouseleave="unflipCard(this)">
+                    <div class="card-inner relative w-full h-64 transition-transform duration-700 preserve-3d">
+                        <div class="card-front absolute inset-0 bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl border-l-4 border-gold backface-hidden flex flex-col justify-center hover:shadow-2xl transition-shadow">
+                            <div class="w-16 h-16 bg-gradient-to-br from-gold to-gold-light rounded-xl flex items-center justify-center mb-6 text-white transform group-hover:scale-110 transition-transform duration-500">
+                                <i class="fas fa-chart-line text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-navy dark:text-white mb-4">Financial Management</h3>
+                            <div class="text-gold font-medium mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center">
+                                Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                        <div class="card-back absolute inset-0 bg-gradient-to-br from-slate to-navy dark:from-slate-800 dark:to-slate-900 text-white p-8 rounded-2xl shadow-xl backface-hidden rotate-y-180 flex flex-col justify-center">
+                            <h4 class="text-xl font-bold mb-4">Financial Excellence:</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Monthly Bookkeeping & Statements</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Internal Control Systems</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Tax Advisory & Preparation</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Financial Forecasting</li>
+                            </ul>
+                            <a href="#contact" class="mt-6 px-4 py-2 bg-gold text-white rounded-lg text-sm font-medium inline-block w-fit mx-auto hover:bg-gold-light transition">Get Quote</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="service-card group" onmouseenter="flipCard(this)" onmouseleave="unflipCard(this)">
+                    <div class="card-inner relative w-full h-64 transition-transform duration-700 preserve-3d">
+                        <div class="card-front absolute inset-0 bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl border-l-4 border-gold backface-hidden flex flex-col justify-center hover:shadow-2xl transition-shadow">
+                            <div class="w-16 h-16 bg-gradient-to-br from-gold to-gold-light rounded-xl flex items-center justify-center mb-6 text-white transform group-hover:scale-110 transition-transform duration-500">
+                                <i class="fas fa-briefcase text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-navy dark:text-white mb-4">Business Consulting</h3>
+                            <div class="text-gold font-medium mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center">
+                                Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                        <div class="card-back absolute inset-0 bg-gradient-to-br from-slate to-navy dark:from-slate-800 dark:to-slate-900 text-white p-8 rounded-2xl shadow-xl backface-hidden rotate-y-180 flex flex-col justify-center">
+                            <h4 class="text-xl font-bold mb-4">Strategic Guidance:</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Operational Efficiency Audits</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Logistics & Procurement</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Behavior Change Communication</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Market Entry Strategies</li>
+                            </ul>
+                            <a href="#contact" class="mt-6 px-4 py-2 bg-gold text-white rounded-lg text-sm font-medium inline-block w-fit mx-auto hover:bg-gold-light transition">Get Quote</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="service-card group" onmouseenter="flipCard(this)" onmouseleave="unflipCard(this)">
+                    <div class="card-inner relative w-full h-64 transition-transform duration-700 preserve-3d">
+                        <div class="card-front absolute inset-0 bg-white dark:bg-slate-800 p-8 rounded-2xl shadow-xl border-l-4 border-navy dark:border-gold backface-hidden flex flex-col justify-center hover:shadow-2xl transition-shadow">
+                            <div class="w-16 h-16 bg-gradient-to-br from-navy to-slate dark:from-gold dark:to-gold-light rounded-xl flex items-center justify-center mb-6 text-white transform group-hover:scale-110 transition-transform duration-500">
+                                <i class="fas fa-users text-2xl"></i>
+                            </div>
+                            <h3 class="text-2xl font-serif font-bold text-navy dark:text-white mb-4">Capacity Building</h3>
+                            <div class="text-gold font-medium mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-center">
+                                Learn More <i class="fas fa-arrow-right ml-2 group-hover:translate-x-1 transition-transform"></i>
+                            </div>
+                        </div>
+                        <div class="card-back absolute inset-0 bg-gradient-to-br from-navy to-slate dark:from-slate-800 dark:to-slate-900 text-white p-8 rounded-2xl shadow-xl backface-hidden rotate-y-180 flex flex-col justify-center">
+                            <h4 class="text-xl font-bold mb-4">Development Programs:</h4>
+                            <ul class="space-y-2 text-sm">
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Training Needs Assessment</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Curriculum Development</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Organizational Training</li>
+                                <li class="flex items-center"><i class="fas fa-check text-gold mr-2"></i>Leadership Development</li>
+                            </ul>
+                            <a href="#contact" class="mt-6 px-4 py-2 bg-gold text-white rounded-lg text-sm font-medium inline-block w-fit mx-auto hover:bg-gold-light transition">Get Quote</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Dashboard -->
+    <section class="py-24 bg-navy dark:bg-dark relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent animate-gradient"></div>
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-white mb-6">Impact Metrics</h2>
+                <p class="text-gray-400 text-lg">Real results for our clients</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="text-center p-8 glass rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/5 transition-all duration-500 hover:scale-105">
+                    <div class="text-5xl font-bold text-gold mb-4 counter" data-target="83">0</div>
+                    <div class="text-white font-semibold">Companies Served</div>
+                    <div class="h-1 w-16 bg-gradient-to-r from-gold to-transparent mx-auto mt-4"></div>
+                </div>
+                
+                <div class="text-center p-8 glass rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/5 transition-all duration-500 hover:scale-105">
+                    <div class="text-5xl font-bold text-gold mb-4 counter" data-target="5">0</div>
+                    <div class="text-white font-semibold">Years Experience</div>
+                    <div class="h-1 w-16 bg-gradient-to-r from-gold to-transparent mx-auto mt-4"></div>
+                </div>
+                
+                <div class="text-center p-8 glass rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/5 transition-all duration-500 hover:scale-105">
+                    <div class="text-5xl font-bold text-gold mb-4 counter" data-target="55">0</div>
+                    <div class="text-white font-semibold">Client Retention</div>
+                    <div class="h-1 w-16 bg-gradient-to-r from-gold to-transparent mx-auto mt-4"></div>
+                </div>
+                
+                <div class="text-center p-8 glass rounded-2xl backdrop-blur-sm border border-white/10 hover:bg-white/5 transition-all duration-500 hover:scale-105">
+                    <div class="text-5xl font-bold text-gold mb-4 counter" data-target="200">0</div>
+                    <div class="text-white font-semibold">Projects Completed</div>
+                    <div class="h-1 w-16 bg-gradient-to-r from-gold to-transparent mx-auto mt-4"></div>
+                </div>
+            </div>
+            
+            <!-- Progress Bars -->
+            <div class="mt-20 glass p-8 rounded-2xl backdrop-blur-sm border border-white/10">
+                <h3 class="text-2xl font-bold text-white mb-8">Service Adoption</h3>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex justify-between text-white mb-2">
+                            <span class="flex items-center"><i class="fas fa-file-contract text-gold mr-2"></i> Compliance Management</span>
+                            <span class="percentage font-bold" data-target="95">0%</span>
+                        </div>
+                        <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-gold to-yellow-300 rounded-full progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between text-white mb-2">
+                            <span class="flex items-center"><i class="fas fa-chart-line text-gold mr-2"></i> Financial Advisory</span>
+                            <span class="percentage font-bold" data-target="88">0%</span>
+                        </div>
+                        <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-gold to-yellow-300 rounded-full progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="flex justify-between text-white mb-2">
+                            <span class="flex items-center"><i class="fas fa-briefcase text-gold mr-2"></i> Business Consulting</span>
+                            <span class="percentage font-bold" data-target="92">0%</span>
+                        </div>
+                        <div class="h-2 bg-white/10 rounded-full overflow-hidden">
+                            <div class="h-full bg-gradient-to-r from-gold to-yellow-300 rounded-full progress-bar" style="width: 0%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sectors Served -->
+    <section id="sectors" class="py-24 bg-white dark:bg-slate-900">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="text-gold font-semibold uppercase tracking-wider text-sm mb-4 block">Our Reach</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold text-navy dark:text-white mb-6">Sectors Served</h2>
+                <p class="text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">Extensive experience across diverse industries and organizational types</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-800 hover:border-gold transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="w-20 h-20 bg-gradient-to-br from-gold/20 to-navy/20 dark:from-gold/10 dark:to-transparent rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-hands-helping text-3xl text-gold"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-navy dark:text-white">Humanitarian Sector</h4>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Trusted by UN agencies, INGOs, and NGOs for project cycle management, design assessment, and impact evaluation.
+                    </p>
+                    <div class="mt-6">
+                        <span class="inline-block px-3 py-1 bg-gold/10 text-gold text-xs font-medium rounded-full">UN Agencies</span>
+                        <span class="inline-block px-3 py-1 bg-gold/10 text-gold text-xs font-medium rounded-full ml-2">INGOs</span>
+                    </div>
+                </div>
+                
+                <div class="text-center p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-800 hover:border-gold transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="w-20 h-20 bg-gradient-to-br from-gold/20 to-navy/20 dark:from-gold/10 dark:to-transparent rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-landmark text-3xl text-gold"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-navy dark:text-white">Public Sector</h4>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Expertise in Tourism development, university-level seminars, and provincial management development training.
+                    </p>
+                    <div class="mt-6">
+                        <span class="inline-block px-3 py-1 bg-gold/10 text-gold text-xs font-medium rounded-full">Government</span>
+                        <span class="inline-block px-3 py-1 bg-gold/10 text-gold text-xs font-medium rounded-full ml-2">Universities</span>
+                    </div>
+                </div>
+                
+                <div class="text-center p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-800 hover:border-gold transition-all duration-500 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="w-20 h-20 bg-gradient-to-br from-gold/20 to-navy/20 dark:from-gold/10 dark:to-transparent rounded-2xl flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-user-graduate text-3xl text-gold"></i>
+                    </div>
+                    <h4 class="text-2xl font-bold mb-4 text-navy dark:text-white">Workforce Development</h4>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+                        Specialized Train-the-Trainer programs, behavioral change initiatives, and productivity enhancement.
+                    </p>
+                    <div class="mt-6">
+                        <span class="inline-block px-3 py-1 bg-gold/10 text-gold text-xs font-medium rounded-full">Training</span>
+                        <span class="inline-block px-3 py-1 bg-gold/10 text-gold text-xs font-medium rounded-full ml-2">Development</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="py-24 bg-gradient-to-br from-gray-50 to-white dark:from-slate-900 dark:to-slate-800">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="lg:flex lg:justify-between items-center gap-16">
+                <div class="lg:w-1/2 mb-12 lg:mb-0">
+                    <div class="relative group">
+                        <div class="absolute -inset-4 bg-gradient-to-r from-gold to-transparent rounded-2xl opacity-0 group-hover:opacity-20 blur transition-opacity duration-500"></div>
+                        <img src="professionals.jpg" alt="Team Discussion" class="rounded-2xl shadow-2xl w-full object-cover">
+                    </div>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <span class="text-gold font-semibold uppercase tracking-wider text-sm mb-4 block">Our Advantage</span>
+                    <h2 class="text-4xl font-serif font-bold text-navy dark:text-white mb-10">Why Choose Vijaya?</h2>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-gold/20 to-navy/20 dark:from-gold/10 dark:to-transparent flex items-center justify-center mr-6">
+                                <i class="fas fa-coins text-gold text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-navy dark:text-white mb-2">Lean & Cost-Effective</h4>
+                                <p class="text-gray-600 dark:text-gray-400">We maintain a lean operation to provide high-quality advisory without the overhead costs of large firms.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-gold/20 to-navy/20 dark:from-gold/10 dark:to-transparent flex items-center justify-center mr-6">
+                                <i class="fas fa-gavel text-gold text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-navy dark:text-white mb-2">Deep Regulatory Knowledge</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Up-to-date expertise on Sri Lankan corporate law, taxation, and compliance requirements.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-14 h-14 rounded-full bg-gradient-to-br from-gold/20 to-navy/20 dark:from-gold/10 dark:to-transparent flex items-center justify-center mr-6">
+                                <i class="fas fa-handshake text-gold text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-navy dark:text-white mb-2">Ethical Standards</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Uncompromising integrity and confidentiality in all our client dealings.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-800">
+                        <div class="flex items-center">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advanced Contact Form -->
+    <section id="contact" class="py-24 bg-gradient-to-br from-gray-50 to-white dark:from-slate-900 dark:to-slate-800 relative overflow-hidden">
+    <div class="floating-shape shape-1"></div>
+    <div class="floating-shape shape-2"></div>
+    
+    <div class="max-w-5xl mx-auto px-6 lg:px-8">
+        <div class="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl overflow-hidden border border-gray-200 dark:border-gray-700">
+            <div class="md:flex">
+                <div class="md:w-2/5 bg-gradient-to-br from-navy to-slate dark:from-slate-900 dark:to-slate-800 p-10 text-white relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-gold to-transparent animate-gradient-x"></div>
+                    
+                    <div class="relative z-10">
+                        <h3 class="text-3xl font-serif font-bold mb-8">
+                            Let's Transform<br>Your Business
+                        </h3>
+                        <p class="text-gray-300 mb-10">Contact us today to discuss how we can simplify your corporate governance and administration.</p>
+                        
+                        <div class="space-y-6">
+                            <div class="contact-info-card p-4 glass rounded-xl backdrop-blur-sm hover:bg-white/10 transition-all cursor-pointer" onclick="showMap()">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-gold/20 rounded-lg flex items-center justify-center mr-4">
+                                        <i class="fas fa-map-marker-alt text-gold text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Head Office</p>
+                                        <p class="text-sm text-gray-300">15 Wasala Rd, Colombo - 13<br>Sri Lanka</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="contact-info-card p-4 glass rounded-xl backdrop-blur-sm hover:bg-white/10 transition-all cursor-pointer">
+    <div class="flex items-center">
+        <div class="w-12 h-12 bg-gold/20 rounded-lg flex items-center justify-center mr-4">
+            <i class="fas fa-envelope text-gold text-xl"></i>
+        </div>
+        <div>
+            <p class="font-bold">Email Address</p>
+            <p class="text-sm text-gray-300">vijayaconsultancy@gmail.com</p>
+        </div>
+    </div>
+</div>
+                            
+                            <div class="contact-info-card p-4 glass rounded-xl backdrop-blur-sm hover:bg-white/10 transition-all">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-gold/20 rounded-lg flex items-center justify-center mr-4">
+                                        <i class="fas fa-phone text-gold text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Phone</p>
+                                        <p class="text-sm text-gray-300">+94 77 198 9990</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-info-card p-4 glass rounded-xl backdrop-blur-sm hover:bg-white/10 transition-all">
+                                <div class="flex items-center">
+                                    <div class="w-12 h-12 bg-gold/20 rounded-lg flex items-center justify-center mr-4">
+                                        <i class="fas fa-clock text-gold text-xl"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-bold">Business Hours</p>
+                                        <p class="text-sm text-gray-300">Mon-Fri: 8:30AM-5:30PM<br>Sat: 9:00AM-1:00PM</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-3/5 p-10">
+                    <div id="formSteps">
+                        <div class="form-step active">
+                            <h4 class="text-2xl font-bold text-navy dark:text-white mb-2">What service do you need?</h4>
+                            <p class="text-gray-600 dark:text-gray-400 mb-8">Select your primary requirement</p>
+                            
+                            <div class="grid grid-cols-2 gap-4 mb-8" id="serviceOptions">
+                                <div class="service-option p-6 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-center cursor-pointer hover:border-gold hover:shadow-lg transition-all" data-service="Business Registration">
+                                    <i class="fas fa-university text-gold text-2xl mb-3 block"></i>
+                                    <p class="font-serif text-sm text-navy dark:text-white text-xs uppercase">Business Registration</p>
+                                </div>
+                                <div class="service-option p-6 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-center cursor-pointer hover:border-gold hover:shadow-lg transition-all" data-service="Tax & IRD">
+                                    <i class="fas fa-file-invoice-dollar text-gold text-2xl mb-3 block"></i>
+                                    <p class="font-serif text-sm text-navy dark:text-white text-xs uppercase">Tax & IRD</p>
+                                </div>
+                                <div class="service-option p-6 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-center cursor-pointer hover:border-gold hover:shadow-lg transition-all" data-service="Labor & EPF">
+                                    <i class="fas fa-users-cog text-gold text-2xl mb-3 block"></i>
+                                    <p class="font-serif text-sm text-navy dark:text-white text-xs uppercase">Labor & EPF</p>
+                                </div>
+                                <div class="service-option p-6 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-center cursor-pointer hover:border-gold hover:shadow-lg transition-all" data-service="Trade & License">
+                                    <i class="fas fa-ship text-gold text-2xl mb-3 block"></i>
+                                    <p class="font-serif text-sm text-navy dark:text-white text-xs uppercase">Trade & Licenses</p>
+                                </div>
+                                <div class="service-option p-6 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-center cursor-pointer hover:border-gold hover:shadow-lg transition-all" data-service="Company Secretarial">
+                                    <i class="fas fa-user-tie text-gold text-2xl mb-3 block"></i>
+                                    <p class="font-serif text-sm text-navy dark:text-white text-xs uppercase">Secretarial</p>
+                                </div>
+                                <div class="service-option p-6 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-center cursor-pointer hover:border-gold hover:shadow-lg transition-all" data-service="Financial Management">
+                                    <i class="fas fa-chart-pie text-gold text-2xl mb-3 block"></i>
+                                    <p class="font-serif text-sm text-navy dark:text-white text-xs uppercase">Financial Management</p>
+                                </div>
+                                <div class="service-option p-6 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-center cursor-pointer hover:border-gold hover:shadow-lg transition-all" data-service="Business Consulting">
+                                    <i class="fas fa-lightbulb text-gold text-2xl mb-3 block"></i>
+                                    <p class="font-serif text-sm text-navy dark:text-white text-xs uppercase">Business Consulting</p>
+                                </div>
+                                <div class="service-option p-6 border-2 border-gray-200 dark:border-gray-700 rounded-xl text-center cursor-pointer hover:border-gold hover:shadow-lg transition-all" data-service="Capacity Building">
+                                    <i class="fas fa-graduation-cap text-gold text-2xl mb-3 block"></i>
+                                    <p class="font-serif text-sm text-navy dark:text-white text-xs uppercase">Capacity Building</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between">
+                                <div></div>
+                                <button class="next-step px-6 py-3 bg-gradient-to-r from-navy to-slate text-white rounded-lg font-medium hover:shadow-lg transition-all hover:scale-105 flex items-center">
+                                    Next <i class="fas fa-arrow-right ml-2"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-step hidden">
+                            <h4 class="text-2xl font-bold text-navy dark:text-white mb-2">Tell us about yourself</h4>
+                            <p class="text-gray-600 dark:text-gray-400 mb-8">We'll get back to you within 24 hours</p>
+                            
+                            <div class="space-y-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <input type="text" id="userName" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold dark:bg-slate-700" placeholder="Full Name *">
+                                    <input type="text" id="userOrg" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold dark:bg-slate-700" placeholder="Organization *">
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    <input type="email" id="userEmail" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold dark:bg-slate-700" placeholder="Email *">
+                                    <input type="tel" id="userPhone" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-gold dark:bg-slate-700" placeholder="Phone *">
+                                </div>
+                                <textarea id="userMsg" required class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg h-40 focus:outline-none focus:ring-2 focus:ring-gold dark:bg-slate-700" placeholder="Describe your requirement..."></textarea>
+                                <div class="flex items-center">
+                                    <input type="checkbox" id="privacyPolicy" required class="w-4 h-4 text-gold rounded focus:ring-gold">
+                                    <label for="privacyPolicy" class="ml-2 text-sm text-gray-600 dark:text-gray-400">I agree to the Privacy Policy</label>
+                                </div>
+                            </div>
+                            
+                            <div class="flex justify-between mt-10">
+                                <button class="prev-step px-6 py-3 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg font-medium hover:bg-gray-50 dark:hover:bg-slate-700 transition flex items-center">
+                                    <i class="fas fa-arrow-left mr-2"></i> Back
+                                </button>
+                                <button type="button" onclick="sendToWhatsApp()" class="px-8 py-3 bg-gradient-to-r from-gold to-gold-light text-white font-medium rounded-lg hover:shadow-lg transition-all hover:scale-105 flex items-center">
+                                    <i class="fab fa-whatsapp mr-2 text-xl"></i> Send via WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-10">
+                        <div class="flex justify-between mb-2 text-sm text-gray-600 dark:text-gray-400">
+                            <span>Step <span id="stepNum">1</span> of 2</span>
+                            <span><span id="stepPercent">50</span>% Complete</span>
+                        </div>
+                        <div class="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-gold to-gold-light h-2 rounded-full w-1/2 transition-all duration-500" id="formProgress"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const options = document.querySelectorAll('.service-option');
+            const steps = document.querySelectorAll('.form-step');
+            const progress = document.getElementById('formProgress');
+            const stepNum = document.getElementById('stepNum');
+            const stepPercent = document.getElementById('stepPercent');
+            let selectedService = '';
+
+            options.forEach(opt => {
+                opt.addEventListener('click', () => {
+                    options.forEach(o => o.classList.remove('border-gold', 'bg-gold/5', 'ring-2', 'ring-gold/20'));
+                    opt.classList.add('border-gold', 'bg-gold/5', 'ring-2', 'ring-gold/20');
+                    selectedService = opt.getAttribute('data-service');
+                });
+            });
+
+            document.querySelector('.next-step').addEventListener('click', () => {
+                if(!selectedService) return alert('Select a service');
+                steps[0].classList.add('hidden'); steps[1].classList.remove('hidden');
+                progress.style.width = '100%'; stepNum.textContent = '2'; stepPercent.textContent = '100';
+            });
+
+            document.querySelector('.prev-step').addEventListener('click', () => {
+                steps[1].classList.add('hidden'); steps[0].classList.remove('hidden');
+                progress.style.width = '50%'; stepNum.textContent = '1'; stepPercent.textContent = '50';
+            });
+
+            window.sendToWhatsApp = function() {
+                const name = document.getElementById('userName').value;
+                const org = document.getElementById('userOrg').value;
+                const msg = document.getElementById('userMsg').value;
+                if(!name || !msg) return alert('Fill required fields');
+
+                const text = `*VIJAYA INQUIRY*%0A*Service:* ${selectedService}%0A*From:* ${name} (${org})%0A*Message:* ${msg}`;
+                window.open(`https://wa.me/94771989990?text=${text}`, '_blank');
+            };
+        });
+    </script>
+</section>
+
+    <footer class="bg-navy dark:bg-dark border-t border-gray-800 pt-16 pb-8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="md:flex justify-between mb-12">
+            <div class="mb-8 md:mb-0">
+                <div class="mb-6">
+                    <img src="logo.png" alt="Vijaya Consultants Logo" class="h-16 w-auto object-contain brightness-0 invert">
+                </div>
+                <p class="text-gray-400 max-w-md mb-6">Simple solutions for greater difficulties. Transforming corporate governance with excellence and integrity.</p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-white font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-gray-400 hover:text-gold transition text-sm">Company Secretarial</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold transition text-sm">Financial Management</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold transition text-sm">Business Consulting</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-gold transition text-sm">Capacity Building</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-gold transition text-sm">About Us</a></li>
+                        <li><a href="#sectors" class="text-gray-400 hover:text-gold transition text-sm">Sectors</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-gold transition text-sm">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-white font-bold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition text-sm">Privacy Policy</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition text-sm">Terms of Service</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-gold transition text-sm">Disclaimer</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-800 pt-8 text-center">
+            <p class="text-gray-500 text-sm">&copy; <span id="currentYear"></span> Vijaya Corporate Consultants (Pvt) Ltd. All rights reserved.</p>
+            <p class="text-gray-600 text-xs mt-2">Reg No: PV00234567 | Member of Sri Lanka Institute of Directors</p>
+        </div>
+    </div>
+</footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set current year
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Page load animation
+            gsap.to('.page-transition', {
+                y: '100%',
+                duration: 1.2,
+                ease: 'power4.inOut',
+                delay: 0.3
+            });
+            
+            // Animate sections on scroll
+            gsap.utils.toArray('section').forEach(section => {
+                gsap.from(section, {
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 85%',
+                        toggleActions: 'play none none reverse'
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 1,
+                    ease: 'power3.out'
+                });
+            });
+            
+            // Initialize counters
+            initializeCounters();
+            
+            // Initialize 3D background
+            init3DBackground();
+            
+            // Initialize form steps
+            initFormSteps();
+            
+            // Initialize chat
+            initChat();
+        });
+        
+        // Dark Mode Toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const darkIcon = document.getElementById('darkIcon');
+        
+        darkModeToggle.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            
+            if (document.documentElement.classList.contains('dark')) {
+                darkIcon.classList.remove('fa-moon');
+                darkIcon.classList.add('fa-sun');
+                localStorage.setItem('darkMode', 'enabled');
+            } else {
+                darkIcon.classList.remove('fa-sun');
+                darkIcon.classList.add('fa-moon');
+                localStorage.setItem('darkMode', 'disabled');
+            }
+        });
+        
+        // Check for saved dark mode preference
+        if (localStorage.getItem('darkMode') === 'enabled') {
+            document.documentElement.classList.add('dark');
+            darkIcon.classList.remove('fa-moon');
+            darkIcon.classList.add('fa-sun');
+        }
+        
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobileMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+        
+        // 3D Background for Hero
+        function init3DBackground() {
+            const canvas = document.getElementById('hero3d');
+            if (!canvas) return;
+            
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ 
+                canvas, 
+                alpha: true, 
+                antialias: true 
+            });
+            
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            
+            // Create floating particles
+            const particlesGeometry = new THREE.BufferGeometry();
+            const count = 2000;
+            
+            const positions = new Float32Array(count * 3);
+            const colors = new Float32Array(count * 3);
+            
+            for (let i = 0; i < count * 3; i++) {
+                positions[i] = (Math.random() - 0.5) * 50;
+                colors[i] = Math.random();
+            }
+            
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+            particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+            
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.05,
+                vertexColors: true,
+                transparent: true,
+                opacity: 0.6
+            });
+            
+            const particles = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particles);
+            
+            camera.position.z = 5;
+            
+            // Animation
+            function animate() {
+                requestAnimationFrame(animate);
+                
+                particles.rotation.x += 0.001;
+                particles.rotation.y += 0.002;
+                
+                renderer.render(scene, camera);
+            }
+            
+            animate();
+            
+            // Resize handler
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        }
+        
+        // Card Flip Functionality
+        function flipCard(card) {
+            card.querySelector('.card-inner').style.transform = 'rotateY(180deg)';
+        }
+        
+        function unflipCard(card) {
+            card.querySelector('.card-inner').style.transform = 'rotateY(0deg)';
+        }
+        
+        // Animated Counters
+        function initializeCounters() {
+            const counters = document.querySelectorAll('.counter');
+            const progressBars = document.querySelectorAll('.progress-bar');
+            const percentages = document.querySelectorAll('.percentage');
+            
+            // Check if element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+            
+            // Animate counters when in view
+            function animateCounters() {
+                counters.forEach(counter => {
+                    if (isInViewport(counter) && !counter.classList.contains('animated')) {
+                        counter.classList.add('animated');
+                        
+                        const target = +counter.getAttribute('data-target');
+                        const increment = target / 100;
+                        let current = 0;
+                        
+                        const timer = setInterval(() => {
+                            current += increment;
+                            if (current >= target) {
+                                counter.textContent = target + (counter.getAttribute('data-target').includes('.') ? '' : '+');
+                                clearInterval(timer);
+                            } else {
+                                counter.textContent = Math.floor(current);
+                            }
+                        }, 20);
+                    }
+                });
+                
+                // Animate progress bars
+        progressBars.forEach(bar => {
+            if (isInViewport(bar) && !bar.classList.contains('animated')) {
+                bar.classList.add('animated');
+                
+                // --- FIX STARTS HERE ---
+                // 1. Get the container above the bar (the text row)
+                const textRow = bar.parentElement.previousElementSibling;
+                
+                // 2. Find the percentage span inside that row
+                const targetWidth = textRow.querySelector('.percentage').getAttribute('data-target');
+                // --- FIX ENDS HERE ---
+
+                gsap.to(bar, {
+                    width: targetWidth + '%',
+                    duration: 2,
+                    ease: 'power3.out'
+                });
+            }
+        });
+                
+                // Animate percentages
+                percentages.forEach(percentage => {
+                    if (isInViewport(percentage) && !percentage.classList.contains('animated')) {
+                        percentage.classList.add('animated');
+                        const target = +percentage.getAttribute('data-target');
+                        let current = 0;
+                        
+                        const timer = setInterval(() => {
+                            current += 1;
+                            if (current >= target) {
+                                percentage.textContent = target + '%';
+                                clearInterval(timer);
+                            } else {
+                                percentage.textContent = current + '%';
+                            }
+                        }, 20);
+                    }
+                });
+            }
+            
+            // Initial check
+            animateCounters();
+            
+            // Check on scroll
+            window.addEventListener('scroll', animateCounters);
+        }
+        
+        // Multi-step Form
+        function initFormSteps() {
+            const serviceOptions = document.querySelectorAll('.service-option');
+            const nextStepBtn = document.querySelector('.next-step');
+            const prevStepBtn = document.querySelector('.prev-step');
+            const formSteps = document.querySelectorAll('.form-step');
+            const formProgress = document.getElementById('formProgress');
+            
+            let selectedService = '';
+            let currentStep = 1;
+            
+            // Service selection
+            serviceOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    // Remove active class from all options
+                    serviceOptions.forEach(opt => {
+                        opt.classList.remove('border-gold', 'bg-gold/5');
+                        opt.classList.add('border-gray-200', 'dark:border-gray-700');
+                    });
+                    
+                    // Add active class to clicked option
+                    option.classList.remove('border-gray-200', 'dark:border-gray-700');
+                    option.classList.add('border-gold', 'bg-gold/5');
+                    
+                    selectedService = option.getAttribute('data-service');
+                    
+                    // Enable next button
+                    nextStepBtn.disabled = false;
+                });
+            });
+            
+            // Next step
+            nextStepBtn.addEventListener('click', () => {
+                if (currentStep === 1 && !selectedService) {
+                    alert('Please select a service');
+                    return;
+                }
+                
+                formSteps[0].classList.remove('active');
+                formSteps[0].classList.add('hidden');
+                formSteps[1].classList.remove('hidden');
+                formSteps[1].classList.add('active');
+                
+                formProgress.style.width = '100%';
+                currentStep = 2;
+            });
+            
+            // Previous step
+            prevStepBtn.addEventListener('click', () => {
+                formSteps[1].classList.remove('active');
+                formSteps[1].classList.add('hidden');
+                formSteps[0].classList.remove('hidden');
+                formSteps[0].classList.add('active');
+                
+                formProgress.style.width = '50%';
+                currentStep = 1;
+            });
+        }
+        
+        // WhatsApp Form Submission
+        function sendToWhatsApp() {
+            const name = document.getElementById('userName').value;
+            const org = document.getElementById('userOrg').value;
+            const email = document.getElementById('userEmail').value;
+            const phone = document.getElementById('userPhone').value;
+            const message = document.getElementById('userMsg').value;
+            const privacy = document.getElementById('privacyPolicy').checked;
+            
+            if (!name || !org || !email || !phone || !message) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            if (!privacy) {
+                alert('Please agree to the privacy policy');
+                return;
+            }
+            
+            // Get selected service from step 1
+            const selectedOption = document.querySelector('.service-option.border-gold');
+            const service = selectedOption ? selectedOption.getAttribute('data-service') : 'General Inquiry';
+            
+            // Format message for WhatsApp
+            const formattedText = 
+                `*New Inquiry: Vijaya Corporate Consultants*%0A%0A` +
+                `*Client Name:* ${name}%0A` +
+                `*Organization:* ${org}%0A` +
+                `*Email:* ${email}%0A` +
+                `*Phone:* ${phone}%0A` +
+                `*Service Needed:* ${service}%0A%0A` +
+                `*Message:*%0A${message}%0A%0A` +
+                `*Submitted:* ${new Date().toLocaleString()}`;
+            
+            // WhatsApp number
+            const whatsappNumber = '94771989990';
+            const url = `https://wa.me/${whatsappNumber}?text=${formattedText}`;
+            
+            // Open WhatsApp
+            window.open(url, '_blank');
+            
+            // Show confirmation
+            const confirmation = document.createElement('div');
+            confirmation.className = 'fixed top-6 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-[9999] animate-slide-in';
+            confirmation.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle mr-3"></i>
+                    <span>Form submitted! Opening WhatsApp...</span>
+                </div>
+            `;
+            document.body.appendChild(confirmation);
+            
+            // Remove confirmation after 5 seconds
+            setTimeout(() => {
+                confirmation.remove();
+            }, 5000);
+            
+            // Reset form
+            document.getElementById('whatsappForm').reset();
+            
+            // Go back to step 1
+            const formSteps = document.querySelectorAll('.form-step');
+            formSteps[1].classList.remove('active');
+            formSteps[1].classList.add('hidden');
+            formSteps[0].classList.remove('hidden');
+            formSteps[0].classList.add('active');
+            document.getElementById('formProgress').style.width = '50%';
+        }
+        
+        // Chat Functionality
+        function initChat() {
+            const chatToggle = document.querySelector('.chat-toggle');
+            const chatWindow = document.getElementById('chatWindow');
+            const closeChat = document.querySelector('.close-chat');
+            const sendChat = document.getElementById('sendChat');
+            const chatInput = document.getElementById('chatInput');
+            const chatMessages = document.getElementById('chatMessages');
+            
+            // Toggle chat window
+            chatToggle.addEventListener('click', () => {
+                chatWindow.classList.toggle('hidden');
+                if (!chatWindow.classList.contains('hidden')) {
+                    chatInput.focus();
+                }
+            });
+            
+            // Close chat
+            closeChat.addEventListener('click', () => {
+                chatWindow.classList.add('hidden');
+            });
+            
+            // Send message
+            sendChat.addEventListener('click', sendMessage);
+            chatInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+            
+            function sendMessage() {
+                const message = chatInput.value.trim();
+                if (!message) return;
+                
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'message-user mb-4 text-right';
+                userMessage.innerHTML = `
+                    <div class="inline-block bg-gold text-white rounded-2xl rounded-br-none px-4 py-2 max-w-xs">
+                        <p class="text-sm">${message}</p>
+                    </div>
+                    <p class="text-xs text-gray-500 mt-1">Just now</p>
+                `;
+                chatMessages.appendChild(userMessage);
+                
+                // Clear input
+                chatInput.value = '';
+                
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+                
+                // Simulate bot response after delay
+                setTimeout(() => {
+                    const botResponses = [
+                        "Thank you for your message. Our team typically responds within 2 business hours.",
+                        "That's an excellent question. Our consultants specialize in that area and can provide detailed guidance.",
+                        "We'd be happy to assist with that. Would you like to schedule a consultation call?",
+                        "Based on your inquiry, we recommend our Company Secretarial service for optimal compliance."
+                    ];
+                    
+                    const randomResponse = botResponses[Math.floor(Math.random() * botResponses.length)];
+                    
+                    const botMessage = document.createElement('div');
+                    botMessage.className = 'message-bot mb-4';
+                    botMessage.innerHTML = `
+                        <div class="inline-block bg-gray-100 dark:bg-gray-700 rounded-2xl rounded-tl-none px-4 py-2 max-w-xs">
+                            <p class="text-sm">${randomResponse}</p>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1">Just now</p>
+                    `;
+                    chatMessages.appendChild(botMessage);
+                    
+                    // Scroll to bottom
+                    chatMessages.scrollTop = chatMessages.scrollHeight;
+                }, 1000);
+            }
+        }
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Show map function
+        function showMap() {
+            alert('Opening map location: 15 Wasala Rd, Colombo 01300, Sri Lanka');
+            // In a real implementation, this would open a modal with Google Maps
+        }
+    </script>
+</body>
+</html>
